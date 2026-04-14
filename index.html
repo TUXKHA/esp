@@ -4,12 +4,6 @@
 
 <img id="cam" width="320">
 
-<br><br>
-
-<button onclick="send('home/door/unlock','ON')">Unlock</button>
-<button onclick="send('home/door/unlock','OFF')">Lock</button>
-
-<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 
 <script>
 const cam = document.getElementById("cam");
@@ -17,15 +11,6 @@ setInterval(() => {
   cam.src = "https://espserver-5zhi.onrender.com/latest.jpg?t=" + Date.now();
 }, 500);
 
-const client = mqtt.connect("wss://YOUR_HIVEMQ_URL:8884", {
-  username: "YOUR_USER",
-  password: "YOUR_PASS"
-});
-
-function send(topic, msg) {
-  client.publish(topic, msg);
-}
-</script>
 
 </body>
 </html>
