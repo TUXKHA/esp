@@ -1,15 +1,62 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP Camera</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial;
+    }
+
+    .frame {
+      display: inline-block;
+      background: #111;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    }
+
+    img {
+      display: block;
+      max-width: 95vw;
+      max-height: 95vh;
+      width: auto;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .title {
+      color: white;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
 <body>
 
-<img id="cam" width="320">
+<div class="frame">
+  <div class="title">ESP32 Live Camera</div>
+  <img id="cam">
+</div>
 
 <script>
 const cam = document.getElementById("cam");
 
-setInterval(() => {
+function updateImage() {
   cam.src = "https://espserver-5zhi.onrender.com/latest.jpg?t=" + Date.now();
-}, 500);
+}
+
+setInterval(updateImage, 500);
+updateImage();
 </script>
 
 </body>
